@@ -47,3 +47,6 @@ def Algorithm(points, t, d):
 				add P to best_match_cluster and update the mean point
 	return Clusters
 ```
+
+### Usage
+Place `spatial_cluster.py` and `500-random-25-dimensional-points.csv` in the same directory and run `python spatial_cluster.py`

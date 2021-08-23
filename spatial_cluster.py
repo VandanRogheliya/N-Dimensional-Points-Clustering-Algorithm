@@ -65,18 +65,20 @@ class SpatialCluster:
         self.dimension = dimension
         self.make_clusters()
 
-csv_file = open('project/500-random-25-dimensional-points.csv')
+csv_file = open('500-random-25-dimensional-points.csv')
 csv_reader = csv.reader(csv_file, delimiter=',')
 
 lines = 0
-LIMIT = 500
+
+# Control input here
+NUMBER_OF_POINTS = 500
 THRESHOLD_DISTANCE = 50
 DIMENSIONS = 5
 
 points = []
 
 for rows in csv_reader:
-    if lines > LIMIT + 1:
+    if lines > NUMBER_OF_POINTS + 1:
         break
     lines += 1
     if lines == 1:
