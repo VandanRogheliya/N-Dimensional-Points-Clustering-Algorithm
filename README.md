@@ -47,5 +47,3 @@ def Algorithm(points, t, d):
 				add P to best_match_cluster and update the mean point
 	return Clusters
 ```
-### Possible optimizations
-- Clusters can be sorted and a binary search can be performed instead of iterating them. Time complexity will be improved to `O(d * N * log(N))`
