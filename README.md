@@ -41,7 +41,7 @@ def Algorithm(points, t, d):
 			for each C in Clusters do:
 				if dist(C.mean_point, P) <= t and best_match_cluster distance > dist(C.mean_point, P):
 					best_match_cluster = C
-			if best_match_cluster is Nonde:
+			if best_match_cluster is None:
 				Make a new cluster with P
 			else:
 				add P to best_match_cluster and update the mean point
