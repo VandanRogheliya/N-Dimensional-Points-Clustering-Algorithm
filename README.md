@@ -2,13 +2,13 @@
 
 > Spatial data mining is the process of discovering interesting and previously unknown, but potentially useful patterns from spatial databases.
 
-### Algorithm input:
+### Algorithm input
 
 - Dimensions (d)
 - Threshold distance (t)
 - Array of N Points
 
-### Algorithm output:
+### Algorithm output
 
 - Array of Clusters
 
