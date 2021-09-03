@@ -12,7 +12,7 @@ class single_scan:
     points = []
 
     # Clusters in space
-    # [{ point: (cx1, cy1, cz1), size: n1 }, ...]
+    # [{ (cx1, cy1, cz1), (cx2, cy2, cz2), ... }, ...]
     clusters = []
 
     # threshold distance used to form clusters
@@ -49,6 +49,7 @@ class single_scan:
             if point in cluster_points:
                 continue
             current_objects.add(point)
+            new_cluster = set()
             while current_objects:
                 current_point = current_objects.pop()
                 if current_point in processed_points:
@@ -56,10 +57,10 @@ class single_scan:
                 processed_points.add(current_point)
                 neighbours = self.get_neighbours(current_point)
                 if self.are_neighbours_satisfy_clustering_condition(current_point, neighbours):
-                    self.clusters.append(
-                        {"point": current_point, "size": len(neighbours)})
-                    cluster_points.add(current_point)
+                    new_cluster.add(current_point)
                     current_objects = current_objects.union(neighbours)
+            if new_cluster:
+                self.clusters.append(new_cluster)
 
     def __init__(self, points, threshold_clustering_distance, threshold_relationship_distance, dimension):
         self.points = points
@@ -95,7 +96,7 @@ for rows in csv_reader:
 spatialCluster = single_scan(
     points, threshold_clustering_distance, threshold_relationship_distance, DIMENSIONS)
 print('Input:')
-points.sort() 
+points.sort()
 for point in points:
     print(point)
 print('No. of clusters:', len(spatialCluster.clusters))
