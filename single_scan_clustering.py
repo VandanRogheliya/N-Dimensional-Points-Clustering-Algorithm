@@ -4,6 +4,7 @@ import csv
 
 class single_scan:
     """ Takes points in N dimension space as an input and a threshold distance to form clusters. Time: O(d * n ^ 3) , Space: O(d * n) """
+    #! INPUT:
     # Dimensions
     dimension = 3
 
@@ -11,15 +12,16 @@ class single_scan:
     # [(x1, y1, z1), (x2, y2, z2), ...]
     points = []
 
-    # Clusters in space
-    # [{ (cx1, cy1, cz1), (cx2, cy2, cz2), ... }, ...]
-    clusters = []
-
     # threshold distance used to form clusters
     threshold_clustering_distance = math.inf
 
     # threshold distance used to form relations
     threshold_relationship_distance = math.inf
+
+    #! OUTPUT:
+    # Clusters in space
+    # [{ (cx1, cy1, cz1), (cx2, cy2, cz2), ... }, ...]
+    clusters = []
 
     def calculate_distance(self, pointA, pointB):
         sum = 0

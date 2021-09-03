@@ -1,15 +1,21 @@
 import math
 import csv
 
-class SpatialCluster:
+
+class mean_point_clustering:
     """ Takes points in N dimension space as an input and a threshold distance to form clusters. Time: O(d * n ^ 2), Space: O(d * n) """
+    #! INPUT:
     # Dimensions
     dimension = 3
 
     # Array of points in space
-    # [[x1, y1, z1], [x2, y2, z2], ...]
+    # [(x1, y1, z1), (x2, y2, z2), ...]
     points = []
 
+    # threshold distance used to form clusters
+    threshold_distance = 0
+
+    #! OUTPUT:
     # Clusters in space
     """ 
     [
@@ -17,9 +23,6 @@ class SpatialCluster:
     ]
     """
     clusters = []
-
-    # threshold distance used to form clusters
-    threshold_distance = 0
 
     def calculate_distance(self, pointA, pointB):
         sum = 0
@@ -65,27 +68,33 @@ class SpatialCluster:
         self.dimension = dimension
         self.make_clusters()
 
+
 csv_file = open('500-random-25-dimensional-points.csv')
 csv_reader = csv.reader(csv_file, delimiter=',')
 
 lines = 0
 
 # Control input here
-NUMBER_OF_POINTS = 500
-THRESHOLD_DISTANCE = 50
-DIMENSIONS = 5
+NUMBER_OF_POINTS = 10
+THRESHOLD_DISTANCE = 20
+DIMENSIONS = 1
 
 points = []
 
 for rows in csv_reader:
-    if lines > NUMBER_OF_POINTS + 1:
+    if lines > NUMBER_OF_POINTS:
         break
     lines += 1
     if lines == 1:
         continue
-    points.append([int(coordinate) for coordinate in rows[1:DIMENSIONS+1]])
+    points.append(tuple([int(coordinate)
+                  for coordinate in rows[1:DIMENSIONS+1]]))
 
-spatialCluster = SpatialCluster(points, THRESHOLD_DISTANCE, DIMENSIONS)
-print(len(spatialCluster.clusters))
+spatialCluster = mean_point_clustering(points, THRESHOLD_DISTANCE, DIMENSIONS)
+print('Input:')
+points.sort()
+for point in points:
+    print(point)
+print('No. of clusters: ', len(spatialCluster.clusters))
 for cluster in spatialCluster.clusters:
-     print([point for point in cluster["mean_point"]])
+    print(cluster)
