@@ -5,21 +5,21 @@ import csv
 class single_scan:
     """ Takes points in N dimension space as an input and a threshold distance to form clusters. Time: O(d * n ^ 3) , Space: O(d * n) """
     #! INPUT:
-    # Dimensions
+    #? Dimensions
     dimension = 3
 
-    # Array of points in space
-    # [(x1, y1, z1), (x2, y2, z2), ...]
+    #? Array of points in space
+    #? [(x1, y1, z1), (x2, y2, z2), ...]
     points = []
 
-    # threshold distance used to form clusters
+    #? threshold distance used to form clusters
     threshold_clustering_distance = math.inf
 
-    # threshold distance used to form relations
+    #? threshold distance used to form relations
     threshold_relationship_distance = math.inf
 
     #! OUTPUT:
-    # Clusters in space
+    #? Clusters in space
     # [{ (cx1, cy1, cz1), (cx2, cy2, cz2), ... }, ...]
     clusters = []
 
@@ -78,7 +78,7 @@ csv_reader = csv.reader(csv_file, delimiter=',')
 
 lines = 0
 
-# Control input here
+#? Control input here
 NUMBER_OF_POINTS = 10
 threshold_clustering_distance = 20
 threshold_relationship_distance = 30
@@ -95,11 +95,11 @@ for rows in csv_reader:
     points.append(tuple([int(coordinate)
                   for coordinate in rows[1:DIMENSIONS+1]]))
 
-# Initializing algorithm
+#? Initializing algorithm
 spatialCluster = single_scan(
     points, threshold_clustering_distance, threshold_relationship_distance, DIMENSIONS)
 
-# Printing output
+#? Printing output
 print('Input:')
 points.sort()
 for point in points:

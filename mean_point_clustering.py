@@ -5,18 +5,18 @@ import csv
 class mean_point_clustering:
     """ Takes points in N dimension space as an input and a threshold distance to form clusters. Time: O(d * n ^ 2), Space: O(d * n) """
     #! INPUT:
-    # Dimensions
+    #? Dimensions
     dimension = 3
 
-    # Array of points in space
-    # [(x1, y1, z1), (x2, y2, z2), ...]
+    #? Array of points in space
+    #? [(x1, y1, z1), (x2, y2, z2), ...]
     points = []
 
-    # threshold distance used to form clusters
+    #? threshold distance used to form clusters
     threshold_distance = 0
 
     #! OUTPUT:
-    # Clusters in space
+    #? Clusters in space
     """ 
     [
       { mean_point: [x,y,z], points: [[x1,y1,z1], [x2,y2,z2], ...] }
@@ -74,7 +74,7 @@ csv_reader = csv.reader(csv_file, delimiter=',')
 
 lines = 0
 
-# Control input here
+#? Control input here
 NUMBER_OF_POINTS = 10
 THRESHOLD_DISTANCE = 20
 DIMENSIONS = 1
@@ -90,10 +90,10 @@ for rows in csv_reader:
     points.append(tuple([int(coordinate)
                   for coordinate in rows[1:DIMENSIONS+1]]))
 
-# Initializing algorithm
+#? Initializing algorithm
 spatialCluster = mean_point_clustering(points, THRESHOLD_DISTANCE, DIMENSIONS)
 
-# Printing output
+#? Printing output
 print('Input:')
 points.sort()
 for point in points:
