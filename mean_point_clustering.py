@@ -90,7 +90,10 @@ for rows in csv_reader:
     points.append(tuple([int(coordinate)
                   for coordinate in rows[1:DIMENSIONS+1]]))
 
+# Initializing algorithm
 spatialCluster = mean_point_clustering(points, THRESHOLD_DISTANCE, DIMENSIONS)
+
+# Printing output
 print('Input:')
 points.sort()
 for point in points:
